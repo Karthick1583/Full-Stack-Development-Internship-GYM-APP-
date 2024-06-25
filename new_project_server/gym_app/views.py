@@ -9,6 +9,12 @@ def index(request):
 def why(request):
     return render(request, "why.html")
 
+def subscription(request):
+    return render(request, "subscription.html")
+
+def payment(request):
+    return render(request, "payment.html")
+
 #def trainer(request):
 #    return render(request, "trainer.html")
 

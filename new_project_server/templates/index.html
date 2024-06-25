@@ -1,5 +1,5 @@
 {% load static %}
-{% static "images" as baseUrl %}
+{% static "images" as baseUrl %} <!--to load images from the database-->
 
 
 <!DOCTYPE html>
@@ -55,6 +55,10 @@
                 </li>
                 <li class="nav-item ">
                   <a class="nav-link" href="{%url 'why'%}"> Why us </a>
+                </li>
+                </li>
+                <li class="nav-item ">
+                  <a class="nav-link" href="{%url 'subscription'%}"> Subscription </a>
                 </li>
                 </li>
                 <li class="nav-item">
