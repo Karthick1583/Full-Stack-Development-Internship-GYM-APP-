@@ -1,6 +1,7 @@
 {% load static %}
 {% static "images" as baseUrl %}
 
+
 <!DOCTYPE html>
 <html>
 
@@ -62,6 +63,16 @@
                 <li class="nav-item">
                   <a class="nav-link" href="{%url 'contact'%}"> Contact Us</a>
                 </li>
+                {% if user.is_authenticated %}
+                <li class="nav-item"> Hello, {{user.username}} </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="accounts/logout"> Logout </a>
+                </li>
+                {% else %}
+                <li class="nav-item">
+                  <a class="nav-link" href="accounts/login"> Register / Login</a>
+                </li>
+                {% endif %}
               </ul>
               <div class="user_option">
                 <form class="form-inline my-2 my-lg-0 ml-0 ml-lg-4 mb-3 mb-lg-0">

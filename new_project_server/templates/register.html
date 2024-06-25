@@ -1,0 +1,113 @@
+{% load static %}
+
+<!DOCTYPE html>
+<!-- Created By CodingLab - www.codinglabweb.com -->
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Responsive Registration Form | CodingLab</title>
+    <link rel="stylesheet" href={% static "css/style2.css" %}>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="title">Registration</div>
+      <div class="content">
+        <form action="register" method="POST" onsubmit="return validateForm()">
+          {% csrf_token %}
+          <div class="user-details">
+            <div class="input-box">
+              <span class="details">Full Name</span>
+              <input
+                type="text"
+                name="fullname"
+                placeholder="Enter your name"
+                required
+              />
+            </div>
+            <div class="input-box">
+              <span class="details">Username</span>
+              <input
+                type="text"
+                name="username"
+                placeholder="Enter your username"
+                required
+                pattern="^[a-zA-Z0-9_]+$"
+                title="Username should only contain letters, numbers, and underscores."
+              />
+            </div>
+            <div class="input-box">
+              <span class="details">Email</span>
+              <input
+                type="email"
+                name="email"
+                placeholder="Enter your email"
+                required
+              />
+            </div>
+            <div class="input-box">
+              <span class="details">Phone Number</span>
+              <input
+                type="tel"
+                name="phonenumber"
+                placeholder="Enter your number"
+                required
+                pattern="\d{10}"
+                title="Please enter a valid 10-digit phone number."
+              />
+            </div>
+            <div class="input-box">
+              <span class="details">Password</span>
+              <input
+                type="password"
+                name="password1"
+                id="password1"
+                placeholder="Enter your password"
+                required
+                minlength="8"
+                title="Password must be at least 8 characters long."
+              />
+            </div>
+            <div class="input-box">
+              <span class="details">Confirm Password</span>
+              <input
+                type="password"
+                name="password2"
+                id="password2"
+                placeholder="Confirm your password"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="button">
+            <input type="submit" value="Register" />
+          </div>
+          <p style="text-align: center" class="sign_up">
+            Already have an account? <a href="login">Log In</a>
+          </p>
+        </form>
+
+          <script>
+            function validateForm() {
+                var password1 = document.getElementById("password1").value;
+                var password2 = document.getElementById("password2").value;
+        
+                if (password1 !== password2) {
+                    alert("Passwords do not match.");
+                    return false;
+                }
+                return true;
+            }
+        </script>
+
+      </div>
+    </div>
+    <div>
+        {% for message in messages%}
+        {{message}}
+        {%endfor%}
+    </div>
+    
+  </body>
+</html>
